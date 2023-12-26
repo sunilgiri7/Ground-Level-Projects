@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Predict Diabetes</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous"/>
+    <style>
+        body {
+            background-size: cover;
+            background-image: url("{% static 'DiabetesPrediction/images/ABCD2.jpg' %}");
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .main {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px; /* Increased max-width for two columns */
+            background-color: rgba(255, 255, 255, 0.9); /* Transparent white background */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #0086b3;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            flex-basis: 45%; /* Adjust as needed */
+            text-align: right;
+            margin-right: 10px;
+        }
+
+        input[type="text"] {
+            flex-basis: 50%; /* Adjust as needed */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4dc3ff;
+            border: 2px;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #0086b3;
+            max-width: 100%;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+
+<body>
+<div class="main">
+    <h1>Enter the Following Information</h1>
+    <form action='result'>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="n1">Pregnancies:</label>
+            <input type="text" class="form-control" id="n1" name="n1"/>
+        </div>
+
+        <div class="form-group">
+            <label for="n2">Glucose:</label>
+            <input type="text" class="form-control" id="n2" name="n2"/>
+        </div>
+
+        <div class="form-group">
+            <label for="n3">Blood Pressure:</label>
+            <input type="text" class="form-control" id="n3" name="n3"/>
+        </div>
+
+        <div class="form-group">
+            <label for="n4">Skin Thickness:</label>
+            <input type="text" class="form-control" id="n4" name="n4"/>
+        </div>
+
+        <div class="form-group">
+            <label for="n5">Insulin:</label>
+            <input type="text" class="form-control" id="n5" name="n5"/>
+        </div>
+
+        <div class="form-group">
+            <label for="n6">BMI:</label>
+            <input type="text" class="form-control" id="n6" name="n6"/>
+        </div>
+
+        <div class="form-group">
+            <label for="n7">Diabetes Pedigree Function:</label>
+            <input type="text" class="form-control" id="n7" name="n7"/>
+        </div>
+
+        <div class="form-group">
+            <label for="n8">Age:</label>
+            <input type="text" class="form-control" id="n8" name="n8"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div class="result">Result: {{ result2 }}</div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (Optional, for Bootstrap functionality) -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>
